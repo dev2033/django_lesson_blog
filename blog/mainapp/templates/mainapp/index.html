@@ -39,7 +39,10 @@
                 {% for post in posts %}
                     <div class="col-md-3">
                         <div class="single-post">
-
+                            <!--
+                            Проверка фото, если фото есть то
+                            выводим его, если нет подставляем свое
+                            -->
                             {% if post.photo %}
                                 <img src="{{ post.photo.url }}" alt="{{ post.title }}">
                             {% else %}
@@ -48,7 +51,7 @@
 
                             <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                             <h4>
-                                <span>Posted By:
+                                <span>Автор:
                                     <span class="author-name">
                                         {{ post.author }}
                                     </span>

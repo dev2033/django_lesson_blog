@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.db.models import F
 
 from .models import Tag, Post, Category
 
@@ -34,9 +35,21 @@ class PostsByCategory(ListView):
         return context
 
 
-def get_post(request, slug):
-    return render(request, 'mainapp/category.html')
+class PostsByTag(ListView):
+    """Выводит тэги"""
+    pass
 
 
-def get_category(request, slug):
-    return render(request, 'mainapp/category.html')
+class GetPost(DetailView):
+    """Показывает каждый пост отдельно"""
+    model = Post
+    template_name = 'mainapp/single.html'
+    context_object_name = 'post'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # выражение, которое увеличивает кол-во просмотров
+        self.object.views = F('views') + 1
+        self.object.save()  # сохраняем объект
+        self.object.refresh_from_db()   # перезапрашивает данный из бд
+        return context

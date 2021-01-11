@@ -4,7 +4,7 @@
 
 1) Клонируем репозиторий:
 
-    `git clone `https://github.com/dev2033/django_lesson_blog.git
+    `git clone https://github.com/dev2033/django_lesson_blog.git`
 
 2) Создаем виртуальное окружение:
 

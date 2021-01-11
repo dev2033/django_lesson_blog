@@ -18,22 +18,30 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'custom_style.css' %}">
     <link rel="stylesheet" href="{% static 'responsive.css' %}">
 </head>
+
+<style>
+    .grid .portfolio-item img {
+        float: left;
+        height: auto;
+        width: 72px;
+    }
+</style>
 
 <body>
     <div class="wrapper">
 
 
-        {% cache 20 header %}
+        {% cache 10 header %}
         {% include 'inc/_header.html' %}
         {% endcache %}
 
         {% block content %}{% endblock %}
 
-        {% cache 20 footer %}
+        {% cache 10 footer %}
         {% include 'inc/_footer.html' %}
         {% endcache %}
 

@@ -1,0 +1,22 @@
+.gl {
+    text-decoration: none;
+    color: #008B8B;
+    font-size: 18px;
+}
+.gl:hover {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+}
+
+.tags-cl {
+    text-decoration: none;
+    color: #008B8B;
+    font-size: 18px;
+}
+
+.tags-cl:hover {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+}

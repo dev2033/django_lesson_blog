@@ -64,3 +64,20 @@ class GetPost(DetailView):
         self.object.save()  # сохраняем объект
         self.object.refresh_from_db()   # перезапрашивает данный из бд
         return context
+
+
+class Search(ListView):
+    """Поиск данных по сайту"""
+    template_name = 'mainapp/search.html'
+    context_object_name = 'posts'
+    paginate_by = 4
+
+    def get_queryset(self):
+        return Post.objects.filter(title__icontains=self.request.GET.get('s'))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # пагинация для поиска(шаблона search) - добавляем
+        # переменную s в контекст
+        context['s'] = f"s={self.request.GET.get('s')}&"
+        return context

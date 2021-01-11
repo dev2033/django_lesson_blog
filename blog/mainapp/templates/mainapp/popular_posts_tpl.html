@@ -1,12 +1,13 @@
 <h2 class="sidebar-title">Популярные посты</h2>
 <div class="grid">
     {% for post in posts %}
-        <div class="portfolio-item popular">
+        <div class="portfolio-item popular" style="">
 
             {% if post.photo %}
                 <img src="{{ post.photo.url }}" alt="{{ post.title }}">
             {% else %}
-                <img src="https://picsum.photos/id/237/300/201" alt="{{ post.title }}">
+                <img src="https://picsum.photos/id/237/300/201" alt="{{ post.title }}"
+                     style="float: left; width: 60px; height: auto;">
             {% endif %}
 
             <div class="portfolio-text">

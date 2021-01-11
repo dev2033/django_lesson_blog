@@ -4,6 +4,7 @@ from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 
 
+
 class Rubric(MPTTModel):
     """Рубрика"""
     name = models.CharField('Имя', max_length=50, unique=True)
@@ -20,3 +21,13 @@ class Rubric(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['name']
+
+
+class Article(models.Model):
+
+    name = models.CharField('Имя', max_length=250)
+    category = TreeForeignKey(Rubric, on_delete=models.PROTECT,
+                              verbose_name='Категория')
+
+    def __str__(self):
+        return self.name
